@@ -17,10 +17,10 @@ jobs:
                 key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
                 restore-keys: |
                   ${{ runner.os }}-gradle-
-            - name: Setting up the system environment
-              run: cp ./.github/workflows/github-action-only.jks ./app/keys.jks
             container: alvrme/alpine-android:android-31-jdk11
-            script: |
+            - name: Setting up the system environment
+              run: |
+                cp ./.github/workflows/github-action-only.jks ./app/keys.jks
                 export KEYSTORE_PASS=000000000 && export ALIAS_NAME="key0" && export ALIAS_PASS=111111111 && export VERSION_CODE=1 && export VERSION_NAME="GITHUB-${GITHUB_SHA}"
                 export GRADLE_USER_HOME=$(pwd)/.gradle && mkdir -p ${GRADLE_USER_HOME}
                 echo -e "org.gradle.jvmargs=-Xmx1536m\n org.gradle.parallel=true" >> ${GRADLE_USER_HOME}/gradle.properties
