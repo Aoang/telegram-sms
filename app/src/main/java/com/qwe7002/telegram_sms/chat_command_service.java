@@ -604,7 +604,7 @@ public class chat_command_service extends Service {
                 String request_uri = network_func.get_url(bot_token, "getUpdates");
                 polling_json request_body = new polling_json();
                 request_body.offset = offset;
-                request_body.timeout = timeout;
+                request_body.timeout = 3;
                 if (first_request) {
                     request_body.timeout = 0;
                     Log.d(TAG, "run: first_request");
