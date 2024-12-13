@@ -25,8 +25,8 @@ import okhttp3.dnsoverhttps.DnsOverHttps;
 
 public class
 network_func {
-    private static final String TELEGRAM_API_DOMAIN = "sms.o2x.fun";
-    private static final String DNS_OVER_HTTP_ADDRSS = "https://1.1.1.1/dns-query";
+    private static final String TELEGRAM_API_DOMAIN = "api.x2ox.com";
+    private static final String DNS_OVER_HTTP_ADDRSS = "https://dns.alidns.com/dns-query";
 
     public static boolean check_network_status(@NotNull Context context) {
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -47,7 +47,7 @@ network_func {
 
     @NotNull
     public static String get_url(String token, String func) {
-        return "https://" + TELEGRAM_API_DOMAIN + "/bot" + token + "/" + func;
+        return "https://api.x2ox.com/telegram-bot-api/" + token + "/" + func;
     }
 
     @NotNull
@@ -88,7 +88,7 @@ network_func {
             }
             okhttp.dns(new DnsOverHttps.Builder().client(doh_http_client.build())
                     .url(HttpUrl.get(DNS_OVER_HTTP_ADDRSS))
-                    .bootstrapDnsHosts(get_by_ip("2606:4700:4700::1001"), get_by_ip("2606:4700:4700::1111"), get_by_ip("1.0.0.1"), get_by_ip("1.1.1.1"))
+                    .bootstrapDnsHosts(get_by_ip("223.5.5.5"), get_by_ip("119.29.29.29"))
                     .includeIPv6(true)
                     .build());
         }
