@@ -89,7 +89,7 @@ network_func {
             okhttp.dns(new DnsOverHttps.Builder().client(doh_http_client.build())
                     .url(HttpUrl.get(DNS_OVER_HTTP_ADDRSS))
                     .bootstrapDnsHosts(get_by_ip("223.5.5.5"), get_by_ip("119.29.29.29"))
-                    .includeIPv6(true)
+                    .includeIPv6(false)
                     .build());
         }
         return okhttp.build();
